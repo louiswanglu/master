@@ -1,0 +1,208 @@
+{
+  "records": [
+    {
+      "id": "R01",
+      "date": "2026-04-12",
+      "source": "应用评论",
+      "issue_category": "时效准确性",
+      "sentiment": "负面",
+      "urgency": "中",
+      "user_need": "希望晚间到站时间准确，避免因错误倒计时错过课程",
+      "requested_action": null,
+      "evidence_quote": "晚上6点以后就会偏差15–20分钟",
+      "needs_follow_up": true,
+      "missing_information": [
+        "偏差发生的具体线路",
+        "受影响用户范围"
+      ]
+    },
+    {
+      "id": "R02",
+      "date": "2026-04-13",
+      "source": "客服邮件",
+      "issue_category": "退款问题",
+      "sentiment": "负面",
+      "urgency": "高",
+      "user_need": "希望退还同一张通行证的重复扣款",
+      "requested_action": "退还重复扣款",
+      "evidence_quote": "同一张月度学生班车通行证，我被扣了两次费",
+      "needs_follow_up": true,
+      "missing_information": [
+        "重复扣款涉及的交易 ID",
+        "扣款发生的时间范围"
+      ]
+    },
+    {
+      "id": "R03",
+      "date": "2026-04-14",
+      "source": "调查反馈",
+      "issue_category": "可访问性",
+      "sentiment": "负面",
+      "urgency": "中",
+      "user_need": "希望在户外强光下也能看清界面文字",
+      "requested_action": null,
+      "evidence_quote": "绿色文字配灰色背景，在阳光下几乎看不见",
+      "needs_follow_up": false,
+      "missing_information": [
+        "使用的设备与屏幕设置",
+        "受影响的具体页面"
+      ]
+    },
+    {
+      "id": "R04",
+      "date": "2026-04-15",
+      "source": "聊天记录",
+      "issue_category": "应用程序漏洞",
+      "sentiment": "中性",
+      "urgency": "中",
+      "user_need": "希望追踪器不要卡住后突然跳变",
+      "requested_action": null,
+      "evidence_quote": "追踪器在7:42卡住了大约十分钟，然后一下子跳到‘已到达’",
+      "needs_follow_up": true,
+      "missing_information": [
+        "卡住问题的发生频率",
+        "涉及的设备或应用版本"
+      ]
+    },
+    {
+      "id": "R05",
+      "date": "2026-04-15",
+      "source": "应用评论",
+      "issue_category": "功能需求",
+      "sentiment": "正面",
+      "urgency": "低",
+      "user_need": "希望在到达前 10 分钟收到提醒，而不只是提前 2 分钟",
+      "requested_action": "增加提前 10 分钟通知选项",
+      "evidence_quote": "能不能增加一个选项，让我在到达前10分钟收到通知",
+      "needs_follow_up": false,
+      "missing_information": [
+        "该需求涉及的线路范围",
+        "通知频率偏好"
+      ]
+    },
+    {
+      "id": "R06",
+      "date": "2026-04-16",
+      "source": "客服邮件",
+      "issue_category": "可访问性",
+      "sentiment": "负面",
+      "urgency": "高",
+      "user_need": "希望无障碍图标与实际到站车辆的可达性一致",
+      "requested_action": "核实并修正北门无障碍可达性信息",
+      "evidence_quote": "它显示了北门可到达，但抵达的班车没有可用的坡道",
+      "needs_follow_up": true,
+      "missing_information": [
+        "涉及的班次时间",
+        "北门无障碍状态的数据来源"
+      ]
+    },
+    {
+      "id": "R07",
+      "date": "2026-04-16",
+      "source": "调查反馈",
+      "issue_category": "隐私问题",
+      "sentiment": "中性",
+      "urgency": "中",
+      "user_need": "希望了解后台定位的用途以及会存储哪些数据",
+      "requested_action": "说明会存储哪些数据",
+      "evidence_quote": "为什么它会在后台请求？请解释会存储哪些数据",
+      "needs_follow_up": true,
+      "missing_information": [
+        "后台定位的具体触发条件",
+        "数据保留期限"
+      ]
+    },
+    {
+      "id": "R08",
+      "date": "2026-04-17",
+      "source": "聊天记录",
+      "issue_category": "应用程序漏洞",
+      "sentiment": "负面",
+      "urgency": "中",
+      "user_need": "希望在西班牙语界面下仍能看到自己的路线",
+      "requested_action": null,
+      "evidence_quote": "我把手机语言改成西班牙语后，我的路线就消失了",
+      "needs_follow_up": true,
+      "missing_information": [
+        "发生语言切换的具体手机系统",
+        "受影响的路线数量"
+      ]
+    },
+    {
+      "id": "R09",
+      "date": "2026-04-18",
+      "source": "应用评论",
+      "issue_category": "安全问题",
+      "sentiment": "负面",
+      "urgency": "高",
+      "user_need": "希望夜间到站信息真实，避免学生在户外久等",
+      "requested_action": null,
+      "evidence_quote": "校园班车追踪应用仍然显示准时，但学生们却在外面等了很久",
+      "needs_follow_up": true,
+      "missing_information": [
+        "具体线路与站点",
+        "本应到站的计划时间"
+      ]
+    },
+    {
+      "id": "R10",
+      "date": "2026-04-18",
+      "source": "调查反馈",
+      "issue_category": "时效准确性",
+      "sentiment": "正面",
+      "urgency": "低",
+      "user_need": "希望“Arriving”明确指向乘客自己所在的站点",
+      "requested_action": null,
+      "evidence_quote": "‘Arriving’有时指的是前一站，而不是我自己的站点",
+      "needs_follow_up": false,
+      "missing_information": [
+        "受影响的具体站点"
+      ]
+    },
+    {
+      "id": "R11",
+      "date": "2026-04-19",
+      "source": "客服邮件",
+      "issue_category": "应用程序漏洞",
+      "sentiment": "负面",
+      "urgency": "高",
+      "user_need": "希望已付款的访客日票能正常加载出二维码",
+      "requested_action": null,
+      "evidence_quote": "二维码一直没加载出来。我们试了Wi-Fi和蜂窝网络。付款倒是成功了，可应用里只显示一个转圈圈的加载图标",
+      "needs_follow_up": true,
+      "missing_information": [
+        "受影响用户范围",
+        "问题发生时的应用版本"
+      ]
+    },
+    {
+      "id": "R12",
+      "date": "2026-04-20",
+      "source": "应用评论",
+      "issue_category": "功能需求",
+      "sentiment": "中性",
+      "urgency": "中",
+      "user_need": "希望无需安装应用即可通过短信获知班车延误",
+      "requested_action": "增加简单的短信通知选项",
+      "evidence_quote": "请增加一个简单的短信通知选项",
+      "needs_follow_up": false,
+      "missing_information": [
+        "受影响学生规模",
+        "短信通知所需的手机号收集方式"
+      ]
+    }
+  ],
+  "dataset_level_insights": {
+    "most_common_issue_categories": [
+      "时效准确性",
+      "应用程序漏洞",
+      "可访问性"
+    ],
+    "highest_priority_record_ids": [
+      "R09",
+      "R06",
+      "R02"
+    ],
+    "overall_sentiment": "负面"
+  }
+}

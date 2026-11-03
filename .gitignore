@@ -1,0 +1,6 @@
+# Python 虚拟依赖 / 临时安装目录（本地产物，不入库）
+.pylibs/
+# Ruff 缓存
+.ruff_cache/
+# macOS 元数据
+.DS_Store
