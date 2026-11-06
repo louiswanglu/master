@@ -5,7 +5,7 @@
 
 ---
 
-## English version (main post, ~560 words)
+## English version (main post, ~600 words)
 
 Weak AI, or narrow AI, is built to excel inside a bounded problem space: it optimises a defined objective against patterns learned from data, but it cannot transfer its competence to a genuinely new domain, set its own goals, or explain itself in terms a regulator would accept. AGI is defined by generality — a single system that can acquire any cognitive skill a human can, transfer learning across unrelated domains, and act autonomously in unfamiliar situations. The gap is not one of scale but of capability: persistent memory, causal world models, and reliable calibration of its own uncertainty. Multimodal systems make this gap confusing, because they widen the input space — text, images, audio — and that breadth feels like generality. It is not. Each capability is still trained and evaluated on a fixed distribution, inside a workflow a human designed.
 
@@ -17,11 +17,11 @@ I work in eKYC and credit infrastructure at Advance, a Singapore-headquartered g
 
 **Case 3 — thin-file underwriting in the Philippines.** Much of the adult population has no formal credit history, so the evidence becomes alternative: e-wallet screenshots, SMS receipts, sari-sari store ledgers, sometimes a field agent's recorded interview. Multimodal models turn these into features. A human still signs off, because adverse-action reasons have to be defensible to the applicant herself.
 
-The pattern across all three is identical, and it is the same pattern the healthcare literature describes: multimodal weak AI removes perceptual and clerical load, freeing expert attention for judgement, ethics and accountability. AGI would change the profession differently — it would take over the judgement itself. In credit that day has not arrived, and behaving as if it had is not a productivity risk but a compliance one: an unexplained decline is a decline that a regulator, under Indonesia's Personal Data Protection Law or the Philippines' Data Privacy Act, can oblige us to justify.
+The pattern across all three is identical: multimodal weak AI removes perceptual and clerical load, freeing expert attention for judgement, ethics and accountability. AGI would change the profession differently — it would take over the judgement itself. In credit that day has not arrived, and behaving as if it had is not a productivity risk but a compliance one: an unexplained decline is a decline a regulator can oblige us to justify, whether under Indonesia's Personal Data Protection Law or the Philippines' Data Privacy Act. The difference between the two kinds of AI is therefore not a technical curiosity. It is the line between a tool that makes my colleagues faster and a system whose reasoning we would have to be able to defend, in court, to the person we declined.
 
 ---
 
-## 中文版（备用，约 940 字）
+## 中文版（备用，约 990 字）
 
 弱人工智能（Weak AI / Narrow AI）是在有限问题空间内被专门优化的系统：它依靠数据中的统计规律逼近某个既定目标，但无法把能力迁移到全新领域，无法自行设定目标，也无法用监管者能接受的方式解释自己的判断。通用人工智能（AGI）的关键在于通用性：同一个系统能习得人类任何认知技能、跨不相关领域迁移，并在陌生情境中自主行动。二者的差距不在规模，而在能力本身——持久记忆、因果世界模型，以及对自身不确定性的可靠校准。多模态系统把这个差距变得模糊：文本、图像、音频同时进入模型，输入空间的拓宽看起来像"通用"，但它并不通用——每项能力仍固定在既定分布上训练与评估，仍跑在人设计好的流程里。
 
@@ -33,7 +33,7 @@ The pattern across all three is identical, and it is the same pattern the health
 
 **案例三：菲律宾的薄档案授信。** 相当一部分成年人没有正式信贷历史，证据只能来自别处：电子钱包截图、短信回执、社区小店的赊账本，甚至外访员的录音访谈。多模态模型把这些转成特征，最终仍由人签字，因为拒绝理由必须能对申请人本人站得住。
 
-三个案例的规律完全一致，也和医疗领域文献描述的规律相同：多模态弱 AI 卸下感知与事务性负荷，把专家的注意力释放给判断、伦理与问责。AGI 会以另一种方式改变这个职业——它会接管判断本身。在信贷行业，那一天尚未到来；把今天当那一天来用，不是效率风险，而是合规风险：一笔无法解释的拒绝，就是印尼《个人数据保护法》或菲律宾《数据隐私法》下监管可以要求我们解释的那笔拒绝。
+三个案例的规律完全一致：多模态弱 AI 卸下感知与事务性负荷，把专家的注意力释放给判断、伦理与问责。AGI 会以另一种方式改变这个职业——它会接管判断本身。在信贷行业，那一天尚未到来；把今天当那一天来用，不是效率风险，而是合规风险：一笔无法解释的拒绝，就是印尼《个人数据保护法》或菲律宾《数据隐私法》下监管可以要求我们解释的那笔拒绝。所以这两类 AI 的区别不是技术趣闻，而是那条线——线的一边是让同事们更快的工具，另一边是我们要在法庭上、对被拒的申请人本人，为其推理过程负责的系统。
 
 ---
 
@@ -41,4 +41,4 @@ The pattern across all three is identical, and it is the same pattern the health
 
 - 以下表述建议替换为你自己的真实口径（我无法核实内部数据，因此刻意没有写任何具体百分比或人效数字）：案例一、二、三中"十年前/现在"的流程对比若有更准确的说法（例如你们的实际复核比例、平均耗时），补一句具体的会更像你本人写的。
 - 若课程要求只交英文版，删掉中文版即可；两版内容一致，不是机翻对照。
-- 字数：英文正文约 560 词，中文正文约 940 字，均远超 200 字要求。
+- 字数：英文正文约 600 词，中文正文约 990 字，均远超 200 字要求。
