@@ -4,9 +4,9 @@
 
 ---
 
-## English version (main post, ~675 words)
+## English version (main post, ~715 words)
 
-Weak AI is built to excel inside a bounded problem: it optimises a defined objective from learned patterns, but it cannot move to a new domain, set its own goals, or explain itself in terms a regulator would accept. AGI means generality — one system that acquires any human cognitive skill, transfers across unrelated domains, and acts in unfamiliar situations. The gap is not scale but capability: persistent memory, causal world models, calibration about its own uncertainty. Multimodal systems blur this, because text, images and audio together feel like generality. They are not: each model is still trained on a fixed task, inside a workflow a human designed.
+Weak AI is built to excel inside a bounded problem: it optimises a defined objective from learned patterns, but it cannot move to a new domain, set its own goals, or explain itself in terms a regulator would accept. AGI means generality — one system that acquires any human cognitive skill, transfers across unrelated domains, and acts in unfamiliar situations. Frontier models have moved toward that: one model now writes code, reads contracts and handles text, images and audio in the same conversation. What they still lack is persistent memory, a causal model of the world, and calibration about their own uncertainty. Multimodal systems blur this further, because widening the input space feels like generality. It is not: each model is still trained on a fixed task, inside a workflow a human designed.
 
 I work in eKYC and credit infrastructure in Indonesia and the Philippines. What we ship decides whether a real person gets a loan, and how we approach her when she cannot pay.
 
@@ -18,13 +18,13 @@ I work in eKYC and credit infrastructure in Indonesia and the Philippines. What 
 
 The change is not the calling. Officers used to dial all day; now they handle what the system escalates — hardship, disputes, complaints, anyone asking for a person. The failure that matters is specific: speech recognition is weakest on exactly the code-switching and accents of lower-income borrowers. Log "this Friday" when she said next Friday, and that false promise becomes days past due in SLIK or CIC. The borrower pays, not us. So the design stays verifiably narrow — transcribe what was said, surface what could not be parsed, route it to a person. Recordings are consent-bound personal data under Indonesia's PDP Law and the Philippines' Data Privacy Act, which puts the script and retention policy inside the product.
 
-In all three the division of labour is identical: the AI extracts, cross-checks and drafts; the human decides, signs and answers for it. That is what weak AI looks like in production, and why AGI — which would take over the deciding — is a different thing entirely. In credit that day has not arrived, and behaving as if it had is not a productivity risk but a compliance one: an unexplained decline, or a log recording a promise never made, is what a regulator can oblige us to justify.
+In all three the division of labour is identical: the AI extracts, cross-checks and drafts; the human decides, signs and answers for it. That is what weak AI looks like in production, and why AGI — which would take over the deciding — is a different thing. In credit the relevant fact is not philosophical but operational: no system today can be held accountable for a lending decision nobody supervised. Behaving as if one could is not a productivity risk but a compliance one: an unexplained decline, or a log recording a promise never made, is what a regulator can oblige us to justify.
 
 ---
 
-## 中文版（备用，约 1030 字，大白话）
+## 中文版（备用，约 1120 字，大白话）
 
-弱人工智能就是"只会干一件事"的 AI：范围划死，把一件事做到极致，但挪不到别的领域，不会自己定目标，也说不清为什么这么判。AGI 要的是"什么都能干"——跨领域迁移，没见过的情况也能应付。差的不是规模，是几种还没有的能力：记得住事、懂因果、知道自己有多不确定。多模态最容易让人看错：它一次能吃文字、图片、声音，看着像"什么都懂"，其实每项本事还是只在一个固定范围里训练和考核。我在印尼和菲律宾做 eKYC 和征信，模型决定真人能不能拿到贷款。
+弱人工智能就是"只会干一件事"的 AI：范围划死，把一件事做到极致，但挪不到别的领域，不会自己定目标，也说不清为什么这么判。AGI 要的是"什么都能干"——跨领域迁移，没见过的情况也能应付。前沿模型确实往这个方向挪了不少：同一个模型能写代码、读合同，同一段对话里文字、图片、声音都能处理。它真正还缺的是三样：记忆存不下来、对世界没有因果理解、不知道自己什么时候会错。多模态更容易让人看错，因为它一次能吃文字、图片、声音，看着像"什么都懂"，其实每项本事还是只在一个固定范围里训练和考核。我在印尼和菲律宾做 eKYC 和征信，模型决定真人能不能拿到贷款。
 
 **案例一，印尼开户实名认证（图像 + 文字）。** 一份申请进来就两样东西：一张 e-KTP 照片（印尼芯片身份证，Dukcapil 发的，卡上有人像和签名），加一堆手填的字——姓名、NIK、地址。三组模型在上面干活：OCR 认卡上的字，视觉模型把人像和签名抠出来，语言模型把卡上的内容跟申请人填的、跟档案里已有的比一遍，写段摘要把对不上的地方标出来。没有一步自动通过。审核员以前整天敲字，现在只判被标出来的那些：证件日期比结婚证还早、拍的是屏幕不是卡、名字两种拼法对不上、签名跟档案里不是一个人。
 
@@ -34,7 +34,7 @@ In all three the division of labour is identical: the AI extracts, cross-checks 
 
 真正变的不在打电话，而在催收员：以前整天拨号，现在只处理系统推上来的案子——家里困难的、有争议的、来投诉的、以及任何说"我要跟真人说话"的人。最要命的错也很具体：印尼话和 Taglish 的语音识别，最弱的地方正好是一句话混两种语言、带地方口音，而这正是低收入借款人说话的样子。日期听错一点都不中性——记成"答应这周五还"、人家说的是下周五，这条假承诺以后就变成逾期天数进到 SLIK 或 CIC，付代价的是借款人。所以做法是"窄得能查"：照实转写，没听明白就标出来交给人，别猜。
 
-三个案例里分工一样：AI 负责认、对、起草，人负责判断、签字、担责。这就是弱 AI 在生产里真实的样子，也是为什么"接管判断"的 AGI 是另一回事。那天还没到；把今天当那天过，不是效率问题是合规问题：一笔说不清理由的拒绝，或者一条记着人家没答应过的还款承诺的日志，监管都会要我们解释。
+三个案例里分工一样：AI 负责认、对、起草，人负责判断、签字、担责。这就是弱 AI 在生产里真实的样子，也是为什么"接管判断"的 AGI 是另一回事。在信贷这行，关键不是哲学问题是运营事实：今天没有任何系统能在没人监督的情况下为一笔放贷决策负责。把它当成已经能负责，不是效率问题是合规问题：一笔说不清理由的拒绝，或者一条记着人家没答应过的还款承诺的日志，监管都会要我们解释。
 
 ---
 
@@ -43,4 +43,4 @@ In all three the division of labour is identical: the AI extracts, cross-checks 
 - 每个案例标题后括号里标了模态：案例一（图像 + 文字）、案例二（图像 + 文字）、案例三（语音 + 文字 + 图像）。如果课程要求严格对应"文本、图像、音频"三种，这个标注能让评阅人一眼看到三种都覆盖了。
 - 每个案例都写了 AI 具体做什么（OCR / 视觉提取 / 文档字段抽取 / ASR 转写 / 语言模型比对与起草），以及人做什么，避免"只讲行业不讲 AI"。
 - 数字方面只写了"一天一百五十通"这个行业常见量级，没有编百分比。换成你们真实数据会更像本人写的。
-- 字数：英文约 675 词，中文约 1030 字，都远超 200 字下限。
+- 字数：英文约 715 词，中文约 1120 字，都远超 200 字下限。
