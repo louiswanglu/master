@@ -4,7 +4,7 @@
 
 ---
 
-## English version (main post, ~715 words)
+## English version (main post, ~730 words)
 
 Weak AI is built to excel inside a bounded problem: it optimises a defined objective from learned patterns, but it cannot move to a new domain, set its own goals, or explain itself in terms a regulator would accept. AGI means generality — one system that acquires any human cognitive skill, transfers across unrelated domains, and acts in unfamiliar situations. Frontier models have moved toward that: one model now writes code, reads contracts and handles text, images and audio in the same conversation. What they still lack is persistent memory, a causal model of the world, and calibration about their own uncertainty. Multimodal systems blur this further, because widening the input space feels like generality. It is not: each model is still trained on a fixed task, inside a workflow a human designed.
 
@@ -22,7 +22,7 @@ In all three the division of labour is identical: the AI extracts, cross-checks 
 
 ---
 
-## 中文版（备用，约 1120 字，大白话）
+## 中文版（备用，约 1300 字，大白话）
 
 弱人工智能就是"只会干一件事"的 AI：范围划死，把一件事做到极致，但挪不到别的领域，不会自己定目标，也说不清为什么这么判。AGI 要的是"什么都能干"——跨领域迁移，没见过的情况也能应付。前沿模型确实往这个方向挪了不少：同一个模型能写代码、读合同，同一段对话里文字、图片、声音都能处理。它真正还缺的是三样：记忆存不下来、对世界没有因果理解、不知道自己什么时候会错。多模态更容易让人看错，因为它一次能吃文字、图片、声音，看着像"什么都懂"，其实每项本事还是只在一个固定范围里训练和考核。我在印尼和菲律宾做 eKYC 和征信，模型决定真人能不能拿到贷款。
 
