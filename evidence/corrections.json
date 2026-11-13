@@ -1,0 +1,65 @@
+[
+  {
+    "id": "R03",
+    "field": "missing_information",
+    "old": [],
+    "new": [
+      "受影响的具体页面",
+      "设备型号与屏幕设置"
+    ],
+    "reason": "原文未说明是哪个页面、什么设备，属可追问的信息缺口，不应留空数组"
+  },
+  {
+    "id": "R09",
+    "field": "needs_follow_up",
+    "old": false,
+    "new": true,
+    "reason": "urgency=高（涉安全）却标 false，自相矛盾：高紧急必须人工介入"
+  },
+  {
+    "id": "R10",
+    "field": "missing_information",
+    "old": [],
+    "new": [
+      "受影响的具体站点或线路"
+    ],
+    "reason": "原文只说'有时'，未说明哪些站点受影响"
+  },
+  {
+    "id": "R10",
+    "field": "issue_category",
+    "old": "正面反馈",
+    "new": "时效准确性",
+    "reason": "该条 evidence_quote 引的是'Arriving 指错站'这一抱怨，标'正面反馈'与所引证据不符；该抱怨属状态/时间显示问题。sentiment 保留'正面'因为整条记录确实以肯定为主"
+  },
+  {
+    "id": "dataset",
+    "field": "highest_priority_record_ids",
+    "old": [
+      "R02",
+      "R11"
+    ],
+    "new": [
+      "R09",
+      "R06",
+      "R02",
+      "R11"
+    ],
+    "reason": "urgency=高的共 4 条（R02/R06/R09/R11），原输出只列 2 条，与 urgency 字段矛盾"
+  },
+  {
+    "id": "dataset",
+    "field": "most_common_issue_categories",
+    "old": [
+      "应用程序漏洞",
+      "时效准确性",
+      "可访问性"
+    ],
+    "new": [
+      "时效准确性",
+      "应用程序漏洞",
+      "可访问性"
+    ],
+    "reason": "原输出为 [应用程序漏洞, 时效准确性, 可访问性]，但自身统计是 应用程序漏洞3 / 时效准确性3 / 可访问性2（R10 改归时效准确性后，时效准确性亦为3）。两者并列第一，原顺序不算错；重排只是为了与统计口径（先按时效、后按漏洞）一致，属可读性调整而非纠错。"
+  }
+]
