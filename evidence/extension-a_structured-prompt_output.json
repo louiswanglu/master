@@ -1,0 +1,21 @@
+{
+  "records": [
+    {"id":"R01","date":"2026-04-12","source":"应用评论","issue_category":"时效准确性","sentiment":"负面","urgency":"高","user_need":"晚上6点后到站预估偏差15–20分钟，导致错过实验课分组","requested_action":null,"evidence_quote":"晚上6点以后就会偏差15–20分钟","needs_follow_up":true,"missing_information":["涉及的具体线路或站点","偏差发生的具体日期与时间"]},
+    {"id":"R02","date":"2026-04-13","source":"客服邮件","issue_category":"退款问题","sentiment":"负面","urgency":"高","user_need":"同一张学生通行证被重复扣费，希望退还重复扣款","requested_action":"退还重复扣款","evidence_quote":"请退还重复扣款","needs_follow_up":true,"missing_information":["需要核对的交易ID","账号或通行证标识"]},
+    {"id":"R03","date":"2026-04-14","source":"调查反馈","issue_category":"可访问性","sentiment":"负面","urgency":"中","user_need":"户外阳光下绿色文字配灰色背景对比度不足，难以辨认","requested_action":null,"evidence_quote":"绿色文字配灰色背景，在阳光下几乎看不见","needs_follow_up":true,"missing_information":["出问题的具体页面或界面","设备型号与系统版本"]},
+    {"id":"R04","date":"2026-04-15","source":"聊天记录","issue_category":"应用程序漏洞","sentiment":"中性","urgency":"中","user_need":"追踪器在7:42卡住约十分钟后直接跳到已到达，需要正常的实时位置更新","requested_action":null,"evidence_quote":"追踪器在7:42卡住了大约十分钟，然后一下子跳到'已到达'","needs_follow_up":true,"missing_information":["线路或班次编号","设备型号与应用版本"]},
+    {"id":"R05","date":"2026-04-15","source":"应用评论","issue_category":"功能需求","sentiment":"正面","urgency":"低","user_need":"希望在到达前10分钟收到提醒，而不只是提前2分钟","requested_action":"增加到达前10分钟提醒的选项","evidence_quote":"能不能增加一个选项，让我在到达前10分钟收到通知，而不只是提前2分钟？","needs_follow_up":false,"missing_information":[]},
+    {"id":"R06","date":"2026-04-16","source":"客服邮件","issue_category":"可访问性","sentiment":"负面","urgency":"高","user_need":"无障碍图标显示北门可到达，但到站车辆没有可用坡道，只能等下一班","requested_action":null,"evidence_quote":"它显示了北门可到达，但抵达的班车没有可用的坡道","needs_follow_up":true,"missing_information":["线路或班次编号","发生日期与时间"]},
+    {"id":"R07","date":"2026-04-16","source":"调查反馈","issue_category":"隐私问题","sentiment":"负面","urgency":"中","user_need":"想了解后台请求位置权限的原因以及会存储哪些数据","requested_action":"解释会存储哪些数据","evidence_quote":"我理解在使用应用时需要定位权限，但为什么它会在后台请求？","needs_follow_up":true,"missing_information":["应用版本","操作系统类型与版本"]},
+    {"id":"R08","date":"2026-04-17","source":"聊天记录","issue_category":"应用程序漏洞","sentiment":"负面","urgency":"中","user_need":"手机语言改为西班牙语后路线消失，切回英语又恢复，需要路线在各语言下都正常显示","requested_action":null,"evidence_quote":"我把手机语言改成西班牙语后，我的路线就消失了","needs_follow_up":true,"missing_information":["消失的路线名称","设备型号与系统版本"]},
+    {"id":"R09","date":"2026-04-18","source":"应用评论","issue_category":"时效准确性","sentiment":"负面","urgency":"高","user_need":"夜间班车晚点但应用仍显示准时，学生在外面久等且天黑后缺乏安全感","requested_action":null,"evidence_quote":"校园班车追踪应用仍然显示准时，但学生们却在外面等了很久","needs_follow_up":true,"missing_information":["线路或站点名称","晚点发生的具体日期与时间"]},
+    {"id":"R10","date":"2026-04-18","source":"调查反馈","issue_category":"应用程序漏洞","sentiment":"正面","urgency":"低","user_need":"整体满意，但“Arriving”提示有时指前一站而非自己所在站点，造成困惑","requested_action":null,"evidence_quote":"唯一让人困惑的是，'Arriving'有时指的是前一站，而不是我自己的站点","needs_follow_up":true,"missing_information":["出现该提示的具体线路或站点"]},
+    {"id":"R11","date":"2026-04-19","source":"客服邮件","issue_category":"应用程序漏洞","sentiment":"负面","urgency":"高","user_need":"访客日票付款成功但二维码始终不加载，只显示转圈的加载图标","requested_action":null,"evidence_quote":"我给家长买了访客日票，但二维码一直没加载出来","needs_follow_up":true,"missing_information":["订单号或交易ID","设备型号与系统版本"]},
+    {"id":"R12","date":"2026-04-20","source":"应用评论","issue_category":"功能需求","sentiment":"中性","urgency":"低","user_need":"希望不安装应用也能通过短信获知班车是否延误","requested_action":"增加简单的短信通知选项","evidence_quote":"请增加一个简单的短信通知选项","needs_follow_up":false,"missing_information":[]}
+  ],
+  "dataset_level_insights": {
+    "most_common_issue_categories": ["应用程序漏洞","时效准确性","可访问性"],
+    "highest_priority_record_ids": ["R02","R11"],
+    "overall_sentiment": "负面"
+  }
+}
