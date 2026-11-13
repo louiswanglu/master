@@ -42,7 +42,7 @@
       "user_need": "希望在户外强光下也能看清界面文字",
       "requested_action": null,
       "evidence_quote": "绿色文字配灰色背景，在阳光下几乎看不见",
-      "needs_follow_up": false,
+      "needs_follow_up": true,
       "missing_information": [
         "使用的设备与屏幕设置",
         "受影响的具体页面"
@@ -149,7 +149,7 @@
       "date": "2026-04-18",
       "source": "调查反馈",
       "issue_category": "时效准确性",
-      "sentiment": "正面",
+      "sentiment": "中性",
       "urgency": "低",
       "user_need": "希望“Arriving”明确指向乘客自己所在的站点",
       "requested_action": null,
@@ -201,7 +201,8 @@
     "highest_priority_record_ids": [
       "R09",
       "R06",
-      "R02"
+      "R02",
+      "R11"
     ],
     "overall_sentiment": "负面"
   }
