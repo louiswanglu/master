@@ -1,0 +1,86 @@
+角色：你是一名负责把用户反馈转成工程排查工单的结构化抽取员。
+任务：把 12 条原始反馈逐条转换成 JSON 对象，供工程团队排期与复现使用。
+背景：下游会把这些 JSON 直接建入缺陷跟踪系统，因此字段一致性、可复现信息比语言流畅更重要。
+输入：
+R01｜应用评论｜2026-04-12
+“早上公交到站时间通常还可以，但晚上6点以后就会偏差15–20分钟。我因为应用显示班车还有3分钟到，结果两次都错过了实验课分组。”
+
+R02｜客服邮件｜2026-04-13
+“同一张月度学生班车通行证，我被扣了两次费。一账单显示一笔待处理、一笔已扣款。请退还重复扣款。我附上了截图，但我不知道你们需要哪一个交易ID。”
+
+R03｜调查回复｜2026-04-14
+“这个应用很实用，但在户外时颜色对比很难看清。绿色文字配灰色背景，在阳光下几乎看不见。”
+
+R04｜聊天记录｜2026-04-15
+“司机很友好，还帮我拿了包。追踪器在7:42卡住了大约十分钟，然后一下子跳到‘已到达’。没有崩溃提示，只是卡住了。”
+
+R05｜应用评论｜2026-04-15
+“我喜欢班车快到时的提醒。能不能增加一个选项，让我在到达前10分钟收到通知，而不只是提前2分钟？”
+
+R06｜客服邮件｜2026-04-16
+“无障碍班车图标不可靠。它显示了北门可到达，但抵达的班车没有可用的坡道。我不得不等下一班。”
+
+R07｜调查回复｜2026-04-16
+“它总是请求位置权限。我理解在使用应用时需要定位权限，但为什么它会在后台请求？请解释会存储哪些数据。”
+
+R08｜聊天记录｜2026-04-17
+“我把手机语言改成西班牙语后，我的路线就消失了。切回英语后，路线又回来了。也许路线名称没有翻译？”
+
+R09｜应用评论｜2026-04-18
+“班车在夜里到宿舍附近时总是晚点。校园班车追踪应用仍然显示准时，但学生们却在外面等了很久。天黑以后，这让人觉得不安全。”
+
+R10｜调查回复｜2026-04-18
+“整体上比旧的PDF时刻表好太多了。我能看到实时公交和站点名称。唯一让人困惑的是，‘Arriving’有时指的是前一站，而不是我自己的站点。”
+
+R11｜客服邮件｜2026-04-19
+“我给家长买了访客日票，但二维码一直没加载出来。我们试了Wi-Fi和蜂窝网络。付款倒是成功了，可应用里只显示一个转圈圈的加载图标。”
+
+R12｜应用评论｜2026-04-20
+“请增加一个简单的短信通知选项。有些学生不想为了知道班车是否延误而再去安装一个应用。”
+输出格式：只输出一个 JSON 对象，字段名、字段顺序必须与下方 schema 逐字一致，
+          不要输出任何解释文字、不要加 Markdown 代码块围栏。
+
+Schema：
+{
+  "dataset": "campus_shuttle_app_feedback_2026_04",
+  "stakeholder": "app_engineering_team",
+  "issues": [
+    {
+      "id": "R01",
+      "reported_date": "YYYY-MM-DD",
+      "source_channel": "<受控词汇①>",
+      "component": "<受控词汇②>",
+      "symptom": "一句话描述观察到的异常现象",
+      "observed_behavior": "记录里实际发生了什么",
+      "expected_behavior": "记录里期望发生什么，未提及写 null",
+      "platform": "操作系统或平台，未提及写 null",
+      "app_version": "应用版本，未提及写 null",
+      "device": "设备型号，未提及写 null",
+      "frequency": "<受控词汇③>",
+      "severity_for_engineering": "<受控词汇④>",
+      "is_regression": "是否回归问题，未提及写 null",
+      "evidence_quote": "原文连续片段",
+      "repro_inputs_needed": ["复现或定位还需要哪些信息"],
+      "needs_follow_up": true
+    }
+  ],
+  "backlog_hints": {
+    "cluster_by_component": {"component名": 条数},
+    "blockers": ["id"],
+    "highest_debug_value_records": ["id"]
+  }
+}
+
+受控词汇（只能用下列取值，不得自造新标签）：
+  source_channel: 应用评论 | 客服邮件 | 调查反馈 | 聊天记录
+  component: eta_prediction | live_tracking | payment_billing | ticketing_qr | notification | ui_accessibility | accessibility_data | location_permissions | localization
+  frequency: one_off | intermittent | recurring | reproducible | unknown
+  severity_for_engineering: critical | major | minor | enhancement
+规则：
+1. 每条记录恰好产生一个对象，id 必须保留原始 R 编号，不得合并、不得遗漏、不得新增。
+2. evidence_quote 必须是原始记录中的连续原文片段（可截取，不得改写、不得翻译、不得拼接）。
+3. 原文未提供的信息一律写 null，不要用猜测填充；复现所需但原文没给的信息写进 repro_inputs_needed。
+4. 不得推断技术原因或责任方（例如不得写"服务器故障""GPS 漂移""数据库迁移"）。
+5. JSON 必须可被解析：双引号、无注释、无尾随逗号、布尔值不加引号。
+6. severity_for_engineering 只看记录本身：涉及金钱损失或人身安全、或功能完全不可用记 critical；主要功能受损但有替代路径记 major；体验瑕疵记 minor；纯新增需求记 enhancement。
+7. backlog_hints.blockers 必须是 severity_for_engineering 为 critical 的记录 id；cluster_by_component 的条数必须与 issues 中实际统计一致。
