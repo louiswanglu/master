@@ -5,3 +5,16 @@
 # macOS 元数据
 .DS_Store
 DSCI5800_王_路_练习1.zip
+
+# ===== idphoto：只入库源码，本人照片与生成产物不入库 =====
+# 本仓库是公开仓库，证件照、原图、QA 局部裁剪均含个人身份信息。
+# 只提交 tools/*.py、tools/*.swift、README.md。
+idphoto/*.jpg
+idphoto/*.jpeg
+idphoto/*.png
+idphoto/*.webp
+idphoto/build/
+idphoto/qa/
+# 编译好的 Swift 工具（可由 tools/*.swift 重新编译）
+idphoto/tools/faceinfo
+idphoto/tools/fgmask
