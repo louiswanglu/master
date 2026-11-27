@@ -1,0 +1,83 @@
+{
+  "source": "ui_server",
+  "preset": "P2",
+  "prompt_source": "custom",
+  "prompt_chars": 9,
+  "request": {
+    "model": "deepseek-v4.1-flash",
+    "temperature": 0.2,
+    "top_p": 0.3,
+    "max_tokens": 2600,
+    "messages": [
+      {
+        "role": "user",
+        "content": "只回答两个字：测试"
+      }
+    ]
+  },
+  "response": {
+    "id": "bcefb6c4-ed5b-46d6-b9fa-7515b7e61450",
+    "choices": [
+      {
+        "index": 0,
+        "finish_reason": "stop",
+        "logprobs": null,
+        "message": {
+          "role": "assistant",
+          "content": "测试",
+          "refusal": null,
+          "reasoning": "The user says \"只回答两个字：测试\" — \"Only answer with two characters: 测试\". So I should reply exactly \"测试\".",
+          "reasoning_details": [
+            {
+              "index": 0,
+              "type": "reasoning.text",
+              "text": "The user says \"只回答两个字：测试\" — \"Only answer with two characters: 测试\". So I should reply exactly \"测试\"."
+            }
+          ],
+          "reasoning_content": "The user says \"只回答两个字：测试\" — \"Only answer with two characters: 测试\". So I should reply exactly \"测试\"."
+        }
+      }
+    ],
+    "created": 1795766135,
+    "model": "deepseek/deepseek-flash",
+    "object": "chat.completion",
+    "system_fingerprint": "",
+    "usage": {
+      "prompt_tokens": 35,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "completion_tokens": 31,
+      "completion_tokens_details": {
+        "reasoning_tokens": 29
+      },
+      "total_tokens": 66
+    },
+    "extra_fields": {
+      "request_type": "chat_completion",
+      "routing_info": {
+        "provider": "Tencent-O",
+        "model": "deepseek-flash",
+        "key": "Bifrost-Prod",
+        "resolved_key_alias": {
+          "model_id": "deepseek/deepseek-flash",
+          "model_name": "deepseek-v4.1-flash"
+        },
+        "requested_model": "deepseek-v4.1-flash"
+      },
+      "provider": "Tencent-O",
+      "original_model_requested": "deepseek-flash",
+      "resolved_model_used": "deepseek-flash",
+      "latency": 1253,
+      "upstream_latency": 1253,
+      "chunk_index": 0,
+      "provider_response_headers": {
+        "X-Request-Id": "bcefb6c4-ed5b-46d6-b9fa-7515b7e61450",
+        "X-Trace-Id": "bcefb6c4ed5b46d6b9fa7515b7e61450"
+      }
+    }
+  },
+  "elapsed_s": 1.65,
+  "timestamp": "2026-11-27T15:55:36+0800"
+}

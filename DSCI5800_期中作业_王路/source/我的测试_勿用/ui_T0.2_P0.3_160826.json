@@ -1,0 +1,83 @@
+{
+  "source": "ui_server",
+  "preset": "P1",
+  "prompt_source": "custom",
+  "prompt_chars": 25,
+  "request": {
+    "model": "deepseek-v4.1-flash",
+    "temperature": 0.2,
+    "top_p": 0.3,
+    "max_tokens": 2600,
+    "messages": [
+      {
+        "role": "user",
+        "content": "请推荐一个方案，简要说明理由。不要输出 JSON。"
+      }
+    ]
+  },
+  "response": {
+    "id": "5c816515-8327-45c1-87a3-1eb1e31abffd",
+    "choices": [
+      {
+        "index": 0,
+        "finish_reason": "stop",
+        "logprobs": null,
+        "message": {
+          "role": "assistant",
+          "content": "目前缺少具体场景和目标，无法给出可靠方案。请补充：要解决什么问题、使用场景、关键约束（成本/时间/技术栈/合规等）、评估标准。拿到这些信息后，我可以直接给出推荐方案并简要说明理由。",
+          "refusal": null,
+          "reasoning": "We need answer Chinese. User asks \"请推荐一个方案，简要说明理由。不要输出 JSON。\" But no context? Need infer? There is no actual problem. Need ask clarifying? Maybe they expect recommendation for something? We need handle ambiguity. We cannot recommend without knowing domain. Should ask what方案 for. But maybe there's hidden context? The prompt only: \"请推荐一个方案，简要说明理由。不要输出 JSON。\" Means \"Please recommend a plan/solution, briefly explain reasons. Do not output JSON.\" No details. Need ask for more info. We should say需要更多背景. Since user asks direct, we can't recommend. Need maybe mention if it's about software? No. We should ask clarifying questions: 领域/目标/约束/评估标准. Keep concise. Chinese. No JSON. Final.",
+          "reasoning_details": [
+            {
+              "index": 0,
+              "type": "reasoning.text",
+              "text": "We need answer Chinese. User asks \"请推荐一个方案，简要说明理由。不要输出 JSON。\" But no context? Need infer? There is no actual problem. Need ask clarifying? Maybe they expect recommendation for something? We need handle ambiguity. We cannot recommend without knowing domain. Should ask what方案 for. But maybe there's hidden context? The prompt only: \"请推荐一个方案，简要说明理由。不要输出 JSON。\" Means \"Please recommend a plan/solution, briefly explain reasons. Do not output JSON.\" No details. Need ask for more info. We should say需要更多背景. Since user asks direct, we can't recommend. Need maybe mention if it's about software? No. We should ask clarifying questions: 领域/目标/约束/评估标准. Keep concise. Chinese. No JSON. Final."
+            }
+          ],
+          "reasoning_content": "We need answer Chinese. User asks \"请推荐一个方案，简要说明理由。不要输出 JSON。\" But no context? Need infer? There is no actual problem. Need ask clarifying? Maybe they expect recommendation for something? We need handle ambiguity. We cannot recommend without knowing domain. Should ask what方案 for. But maybe there's hidden context? The prompt only: \"请推荐一个方案，简要说明理由。不要输出 JSON。\" Means \"Please recommend a plan/solution, briefly explain reasons. Do not output JSON.\" No details. Need ask for more info. We should say需要更多背景. Since user asks direct, we can't recommend. Need maybe mention if it's about software? No. We should ask clarifying questions: 领域/目标/约束/评估标准. Keep concise. Chinese. No JSON. Final."
+        }
+      }
+    ],
+    "created": 1795766904,
+    "model": "deepseek/deepseek-flash",
+    "object": "chat.completion",
+    "system_fingerprint": "",
+    "usage": {
+      "prompt_tokens": 43,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "completion_tokens": 222,
+      "completion_tokens_details": {
+        "reasoning_tokens": 169
+      },
+      "total_tokens": 265
+    },
+    "extra_fields": {
+      "request_type": "chat_completion",
+      "routing_info": {
+        "provider": "Tencent-O",
+        "model": "deepseek-flash",
+        "key": "Bifrost-Prod",
+        "resolved_key_alias": {
+          "model_id": "deepseek/deepseek-flash",
+          "model_name": "deepseek-v4.1-flash"
+        },
+        "requested_model": "deepseek-v4.1-flash"
+      },
+      "provider": "Tencent-O",
+      "original_model_requested": "deepseek-flash",
+      "resolved_model_used": "deepseek-flash",
+      "latency": 2183,
+      "upstream_latency": 2183,
+      "chunk_index": 0,
+      "provider_response_headers": {
+        "X-Request-Id": "5c816515-8327-45c1-87a3-1eb1e31abffd",
+        "X-Trace-Id": "5c816515832745c187a31eb1e31abffd"
+      }
+    }
+  },
+  "elapsed_s": 2.54,
+  "timestamp": "2026-11-27T16:08:26+0800"
+}

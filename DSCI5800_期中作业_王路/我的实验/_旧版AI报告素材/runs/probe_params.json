@@ -1,0 +1,99 @@
+{
+  "purpose": "验证 temperature / top_p 是否真的生效（报告 5.6 节）",
+  "timestamp": "2026-11-27T14:47:13+08:00",
+  "model_alias": "deepseek-v4.1-flash",
+  "probes": [
+    {
+      "probe": "A 越界校验",
+      "setting": "temperature=5.0",
+      "status": "http_400",
+      "detail": "{\"is_bifrost_error\":false,\"status_code\":400,\"error\":{\"type\":\"invalid_request_error\",\"code\":\"400002\",\"message\":\"The request parameter temperature is invalid or missing. Please check the value of this p"
+    },
+    {
+      "probe": "A 越界校验",
+      "setting": "temperature=-1",
+      "status": "http_400",
+      "detail": "{\"is_bifrost_error\":false,\"status_code\":400,\"error\":{\"type\":\"invalid_request_error\",\"code\":\"400002\",\"message\":\"The request parameter temperature is invalid or missing. Please check the value of this p"
+    },
+    {
+      "probe": "B top_p 效应",
+      "temperature": 1.0,
+      "top_p": 0.01,
+      "n": 10,
+      "distinct": 9,
+      "top_answer_freq": 2,
+      "outputs": [
+        "秋高气爽菊黄",
+        "秋高气爽宜人",
+        "金风送爽秋凉",
+        "秋色层林尽染",
+        "秋高气爽叶黄",
+        "秋风清爽宜人",
+        "金秋丹桂飘香",
+        "金风送爽秋凉",
+        "秋风染黄树叶",
+        "秋高气爽叶落"
+      ]
+    },
+    {
+      "probe": "B top_p 效应",
+      "temperature": 1.0,
+      "top_p": 1.0,
+      "n": 10,
+      "distinct": 7,
+      "top_answer_freq": 3,
+      "outputs": [
+        "秋高气爽宜人",
+        "秋高气爽宜人",
+        "金秋层林尽染",
+        "金秋丹桂飘香",
+        "霜染枫红秋深",
+        "秋风送爽叶黄",
+        "秋高气爽叶黄",
+        "金秋丹桂飘香",
+        "秋高气爽宜人",
+        "秋高气爽天凉"
+      ]
+    },
+    {
+      "probe": "C temperature 效应",
+      "temperature": 0.0,
+      "top_p": 1.0,
+      "n": 10,
+      "distinct": 10,
+      "top_answer_freq": 1,
+      "outputs": [
+        "秋风染红枫叶",
+        "霜染枫红菊黄",
+        "秋风起落叶黄",
+        "秋风送爽叶黄",
+        "秋高气爽叶红",
+        "秋风吹黄稻田",
+        "金秋丹桂飘香",
+        "秋高气爽叶黄",
+        "秋风落叶金黄",
+        "秋高气爽宜人"
+      ]
+    },
+    {
+      "probe": "C temperature 效应",
+      "temperature": 1.5,
+      "top_p": 1.0,
+      "n": 10,
+      "distinct": 8,
+      "top_answer_freq": 3,
+      "outputs": [
+        "金秋枫叶正红",
+        "秋高气爽叶黄",
+        "秋高气爽风清",
+        "秋风染黄山野",
+        "秋高气爽天凉",
+        "秋高气爽叶黄",
+        "秋风起落叶黄",
+        "金风送爽秋来",
+        "秋高气爽宜人",
+        "秋高气爽叶黄"
+      ]
+    }
+  ]
+}
