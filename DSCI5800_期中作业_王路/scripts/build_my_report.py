@@ -39,9 +39,13 @@ def inline(s, shots=None):
     s = re.sub(r"`(截图/[^`]+\.png)`", grab, s)
 
     # 2) 其余行内标记
+    # 注意：不要用单个 * 做 <em>。报告里大量出现 0.35*Capability 这类算式，
+    # 而代码块的 <pre> 是在 md_to_html 里单独处理的，行内算式一旦被 *…* 吞掉
+    # 就会渲染成 0.352+0.254（见旧版 PDF 第 13、25 页）。正文没有真正的单星强调。
     s = re.sub(r"`([^`]+)`", r"<code>\1</code>", s)
     s = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", s)
-    s = re.sub(r"(?<!\*)\*([^*]+)\*(?!\*)", r"<em>\1</em>", s)
+    # Markdown 转义：评审输出里把算式写成 0.35\*2（防止被当成强调），PDF 里应还原成 *
+    s = s.replace("\\*", "*")
     return s
 
 
@@ -121,6 +125,9 @@ def md_to_html(md, shot_counter):
             th = "".join(f"<th>{inline(c, shots)}</th>" for c in head)
             tb = "".join("<tr>" + "".join(f"<td>{inline(c, shots)}</td>" for c in r) + "</tr>" for r in rows)
             cls = "small" if len(head) >= 8 else ""
+            # 七维评审明细表：4 列且首列是"类别"，首列窄、依据列宽，否则"类别"会被挤成竖排
+            if head and head[0] == "类别" and len(head) == 4:
+                cls = (cls + " judge").strip()
             html_tbl = f'<table class="{cls}"><thead><tr>{th}</tr></thead><tbody>{tb}</tbody></table>'
             # 单元格里只留文件名，图片统一放到表格之后
             html_tbl = re.sub(
@@ -219,6 +226,12 @@ table { border-collapse:collapse; width:100%; margin:6pt 0 10pt; font-size:9pt; 
 tr { page-break-inside:avoid; }
 thead { display:table-header-group; }
 table.small { font-size:7.8pt; }
+/* 评审明细表：4 列，首列窄、依据列宽，避免"类别"被挤成竖排 */
+table.judge { table-layout:fixed; font-size:8.4pt; }
+table.judge th:nth-child(1), table.judge td:nth-child(1) { width:16%; }
+table.judge th:nth-child(2), table.judge td:nth-child(2) { width:8%; text-align:center; }
+table.judge th:nth-child(3), table.judge td:nth-child(3) { width:46%; }
+table.judge th:nth-child(4), table.judge td:nth-child(4) { width:30%; }
 th,td { border:0.6pt solid #8a939c; padding:3pt 4pt; vertical-align:top; }
 th { background:#e3e8ee; font-weight:700; }
 ul,ol { margin:3pt 0 8pt; padding-left:1.6em; }
