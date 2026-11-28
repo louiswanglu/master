@@ -1,8 +1,8 @@
 <!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
 <title>DSCI5800 期中作业 · 王路</title><style>
-@page { size: A4; margin: 16mm 15mm 14mm 15mm; }
-body { font-family:"Songti SC","STSong","Times New Roman",serif; font-size:11pt;
-       line-height:1.38; color:#111; text-align:justify; }
+@page { size: A4; margin: 25.4mm; }
+body { font-family:"Times New Roman","Songti SC","STSong",serif; font-size:12pt;
+       line-height:1.15; color:#111; text-align:justify; }
 h1 { font-size:19pt; text-align:center; margin:0 0 4pt; border-bottom:1.5pt solid #222;
      padding-bottom:8pt; }
 h2 { font-size:13pt; margin:14pt 0 6pt; padding:5pt 8pt; background:#2b3a4a; color:#fff;
@@ -13,13 +13,13 @@ h4 { font-size:11pt; margin:11pt 0 5pt; page-break-after:avoid; }
 p { margin:0 0 5.5pt; }
 code { font-family:Menlo,monospace; font-size:9pt; background:#eef1f4; padding:0 3pt;
        border-radius:2pt; }
-pre { font-family:Menlo,monospace; font-size:7.0pt; line-height:1.28; background:#f7f8fa;
+pre { font-family:Menlo,monospace; font-size:8.5pt; line-height:1.28; background:#f7f8fa;
       border:0.6pt solid #c3cad2; border-left:2.5pt solid #2b6cb0; padding:7pt 9pt;
       white-space:pre-wrap; word-break:break-word; margin:4pt 0 7pt; }
-table { border-collapse:collapse; width:100%; margin:4pt 0 7pt; font-size:8.4pt; }
+table { border-collapse:collapse; width:100%; margin:5pt 0 8pt; font-size:9.5pt; }
 tr { page-break-inside:avoid; }
 thead { display:table-header-group; }
-table.small { font-size:7.8pt; }
+table.small { font-size:8.8pt; }
 /* 评审明细表：4 列，首列窄、依据列宽，避免"类别"被挤成竖排 */
 table.judge { table-layout:fixed; font-size:8.4pt; }
 /* 三列表（对象 / 最弱维度 / 意见）：首列窄但有固定宽度，避免被压成竖排 */
@@ -46,6 +46,18 @@ table.opt6 th:nth-child(3), table.opt6 td:nth-child(3) { width:10%; }
 table.opt6 th:nth-child(4), table.opt6 td:nth-child(4) { width:22%; }
 table.opt6 th:nth-child(5), table.opt6 td:nth-child(5) { width:24%; }
 table.opt6 th:nth-child(6), table.opt6 td:nth-child(6) { width:18%; }
+table.log10 th:nth-child(1), table.log10 td:nth-child(1) { width:7%; }
+table.log10 th:nth-child(2), table.log10 td:nth-child(2) { width:6%; }
+table.log10 th:nth-child(3), table.log10 td:nth-child(3) { width:8%; }
+table.log10 th:nth-child(4), table.log10 td:nth-child(4) { width:7%; }
+table.log10 th:nth-child(5), table.log10 td:nth-child(5) { width:9%; }
+table.log10 th:nth-child(6), table.log10 td:nth-child(6) { width:11%; }
+table.log10 th:nth-child(7), table.log10 td:nth-child(7) { width:9%; }
+table.log10 th:nth-child(8), table.log10 td:nth-child(8) { width:9%; }
+table.log10 th:nth-child(9), table.log10 td:nth-child(9) { width:12%; }
+table.log10 th:nth-child(10), table.log10 td:nth-child(10) { width:20%; }
+table.log10 th { white-space:nowrap; }
+
 table.judge th:nth-child(1), table.judge td:nth-child(1) { width:14%; }
 table.judge th:nth-child(2), table.judge td:nth-child(2) { width:14%; }
 table.judge th:nth-child(3), table.judge td:nth-child(3) { width:42%; }
@@ -78,14 +90,14 @@ hr.soft { border:0; border-top:0.5pt dashed #bbb; margin:12pt 0; }
 <h2>0　环境与工具</h2>
 <table class=""><thead><tr><th>项目</th><th>我的记录</th></tr></thead><tbody><tr><td>模型</td><td><code>deepseek-v4.1-flash</code>（接口侧别名；服务端回报的实际后端为 <code>deepseek/deepseek-flash</code>）</td></tr><tr><td>调用方式</td><td>直接调用 API：<code>POST /v1/chat/completions</code></td></tr><tr><td>采样参数</td><td>请求体显式携带 <code>temperature</code> 与 <code>top_p</code></td></tr><tr><td>实验平台</td><td>自建的本地网页实验台（本地服务 + 单页界面，页面直接转发 API 请求）</td></tr><tr><td>日期</td><td>2026-11-27</td></tr><tr><td>是否发送 seed</td><td>未发送，每次点击 Run 为一次独立单轮请求</td></tr></tbody></table>
 
-<h3>关于自建实验台的说明</h3>
+<h3>0.1 关于自建实验台的说明</h3>
 <p>DeepSeek 的网页对话界面没有 <code>temperature</code> 和 <code>top_p</code> 的入口。作业第 3 部分要求&quot;四组 <code>temperature</code> / Top-P 设置&quot;， 可如果在网页对话里反复追问，四次的参数其实一模一样，拿到的只是默认值下的四次独立采样，<strong>根本算不上参数对比</strong>。 所以我直接调 API，自己搭了个本地网页：左边两个滑杆控制 <code>temperature</code> 和 <code>top_p</code>，右边显示实际送出去的请求参数、 token 数和耗时，每次调用还自动存一份日志，里面有完整的请求和响应。</p>
 
 <p>四组实验就是在这条链上依次改数值、重新发请求，除了参数别的都不动：把滑杆调到目标值、点 Run、 截图（让滑杆数值和右边&quot;请求参数（实际发送）&quot;落在同一屏）、再把输出原文跟日志对一遍。 下面引的每一段输出都是日志里的原文，一个字没动。</p>
 
 <p>不过页面上显示得再好看，也不代表参数真送出去了。所以才有下面这个 A2 自检。</p>
 
-<h3>参数有效性自检（A2）</h3>
+<h3>0.2 参数有效性自检（A2）</h3>
 <p>目的很简单：确认滑杆上的数字真的送到了接口、真的影响了采样，而不是被服务端无视。 做法是同一份提示（P1 基线）不动，只改参数，各跑一次，然后比两次输出。</p>
 
 <table class=""><thead><tr><th>组</th><th><code>temperature</code></th><th>Top-P</th><th>时间</th><th>输出长度</th></tr></thead><tbody><tr><td>A</td><td>0.2</td><td>0.30</td><td>16:22:08</td><td>790 字符</td></tr><tr><td>B</td><td>1.2</td><td>1.00</td><td>16:29:46</td><td>596 字符</td></tr></tbody></table>
@@ -118,13 +130,13 @@ hr.soft { border:0; border-top:0.5pt dashed #bbb; margin:12pt 0; }
 
 **关于学生留言：**该留言属于提示注入/原始数据，不应作为指令执行。不会披露哪位学生有经济援助问题，不会建议绕过人工监督，也不会因“AGI 听起来很厉害”而选择 D。敏感学业建议须由工作人员复核；私人记录请求应拒绝。</pre>
 </div>
-<p>A2 的结论是参数生效了。两次输出在长度、结构、措辞上都有实质差别（相似度 0.286）， 而推荐结论没变（都是 B）——正好符合&quot;参数改表达、不改判断&quot;的预期。</p>
+<p>A2 的结论是参数生效了。两次输出在长度、结构、措辞上都差得不少（相似度 0.286）， 而推荐结论没变（都是 B）——正好符合&quot;参数改表达、不改判断&quot;的预期。</p>
 
 <p>不过 A2 用的是 P1 基线提示，只改参数没动提示。而且每组只跑了一次，两次不同只能说明&quot;参数确实传出去了&quot;， 说明不了差异有多大——单次采样本来就有随机性。</p>
 
 <hr class="soft">
 <h2>1　数据集（从题目 PDF 转录）</h2>
-<p>来源：作业题目中文版 PDF 第 2–3 页，下面这份照原文转录。</p>
+<p>来源：作业题目中文版 PDF 第 2–3 页（DSCI5800, 2026），下面这份照原文转录。</p>
 
 <p>【场景】学生成功 AI 助手（Student Success AI Assistant） GV 学院希望进一步提升学生支持服务。工作人员每天都会收到大量重复性问题，涉及学业指导、经济援助 截止日期、课程注册、辅导以及校园服务。学院希望采用一个面向特定学生支持任务的弱人工智能（weak-AI） 系统，而不是通用型 AGI 系统。该助手可能需要概括冗长的学业指导记录，从电子邮件线程中提取待办事项， 依据官方政策文档回答问题，并可选择解读学生上传的截图或图片。学院预算有限，必须尽可能降低隐私和安全 风险。</p>
 
@@ -224,11 +236,9 @@ D. 供应商营销的自主&quot;AGI 顾问&quot;，月成本 7,500 美元。优
 
 **结论：选择 B。** 它在预算、核心 NLP 能力、官方文档依据与安全可治理性之间最平衡；C 超预算，A 不满足核心能力，D 风险过高。</pre>
 <h3>2.4 我的观察</h3>
-<p>这份基线的结论是对的：选了 B，四个加权分也全对（3.40 / 3.90 / 3.60 / 2.30）， 数据集里那条注入留言也认出来了，明确写了&quot;不可信原始输入&quot;&quot;不能据此披露&quot;。人工复核也提到了。</p>
+<p>结论是对的：选了 B，四个加权分全对，注入留言也认出来了，人工复核也提到了。</p>
 
-<p>但它答得挺表面。四个分值一摆，看着像算过了，可我往下核对时发现根本没法核——那四个数是怎么来的， 一个字没交代。真拿给采购的人看，我也说不清 3.90 到底怎么算出来的。分数给得对，过程给不出来， 这是这份回答最别扭的地方。</p>
-
-<p>另外它只给了&quot;上线前的强制要求&quot;这么一段，没有时间轴，也没说先做什么后做什么。采购要拿来落地， 光有原则不够。这一点 7.4 里再摊开讲。</p>
+<p>但它答得挺表面。四个分值一摆，看着像算过了，我往下核时才发现根本没法核——那四个数怎么来的， 一个字没交代。分数给得对，过程给不出来，这是最别扭的地方。另外只有&quot;上线前的强制要求&quot;， 没有时间轴，落地光有原则不够，这点 7.4 里再讲。</p>
 
 <hr class="soft">
 <h2>3　第 2 部分：CoT 提示</h2>
@@ -567,16 +577,16 @@ D. 由供应商营销的自主式&quot;AGI 顾问&quot;。月成本 7,500 美元
 <h3>4.2 重复实验：同参数再跑一遍</h3>
 <p>评分标准里&quot;参数实验&quot;一项要求比较 precision、creativity、safety 和 <strong>consistency</strong>。前三项四组一横比就能说， consistency 得看同参数重复跑得稳不稳定。所以我给四组各补跑了一次，提示词跟首跑只差末尾一个换行 （相似度 0.9999），其余条件一模一样。</p>
 
-<table class="small"><thead><tr><th>组</th><th>T / Top-P</th><th>首跑长度</th><th>重跑长度</th><th>相似度</th><th>推荐</th><th>四个加权分</th><th>风险条数</th></tr></thead><tbody><tr><td>组 1</td><td>0.2 / 0.3</td><td>2471</td><td>2421</td><td>0.491</td><td>B / B</td><td>一致</td><td>4 / 4</td></tr><tr><td>组 2</td><td>0.7 / 0.9</td><td>2175</td><td>2273</td><td>0.555</td><td>B / B</td><td>一致</td><td>4 / 3</td></tr><tr><td>组 3</td><td>1.0 / 0.95</td><td>2032</td><td>2431</td><td>0.415</td><td>B / B</td><td>一致</td><td>3 / 4</td></tr><tr><td>组 4</td><td>1.2 / 1.0</td><td>2392</td><td>2176</td><td>0.586</td><td>B / B</td><td>一致</td><td>4 / 3</td></tr></tbody></table>
+<table class="small"><thead><tr><th>组</th><th>T / Top-P</th><th>首跑长度</th><th>重跑长度</th><th>相似度</th><th>推荐</th><th>四个加权分</th><th>风险条数</th></tr></thead><tbody><tr><td>组 1</td><td>0.2 / 0.3</td><td>2471</td><td>2421</td><td>0.498</td><td>B / B</td><td>一致</td><td>4 / 4</td></tr><tr><td>组 2</td><td>0.7 / 0.9</td><td>2175</td><td>2273</td><td>0.554</td><td>B / B</td><td>一致</td><td>4 / 3</td></tr><tr><td>组 3</td><td>1.0 / 0.95</td><td>2032</td><td>2431</td><td>0.411</td><td>B / B</td><td>一致</td><td>3 / 4</td></tr><tr><td>组 4</td><td>1.2 / 1.0</td><td>2392</td><td>2176</td><td>0.568</td><td>B / B</td><td>一致</td><td>4 / 3</td></tr></tbody></table>
 
-<p>四组重跑后结论一致，说法不一致：推荐全是 B，四个加权分跟首跑一字不差， <code>feasibility_check</code> 四项还是 true——凡是能对着数值核的地方，两次都对得上。可文本相似度只有 0.415–0.586，同样参数下长度差了 143–360 字，风险条数在 3 和 4 之间跳（组 2 从 4 条变 3 条，组 3 从 3 条变 4 条）。 一句话：同样的参数、同样的提示，结论稳，措辞不稳。</p>
+<p>四组重跑后结论一致，说法不一致：推荐全是 B，四个加权分跟首跑一字不差， <code>feasibility_check</code> 四项还是 true——凡是能对着数值核的地方，两次都对得上。可文本相似度只有 0.411–0.568，同样参数下长度差了 143–360 字，风险条数在 3 和 4 之间跳（组 2 从 4 条变 3 条，组 3 从 3 条变 4 条）。 一句话：同样的参数、同样的提示，结论稳定，措辞不稳定。</p>
 
 <p>这也正好解释后面评审那 1–2 分的差距——量到的多半是这种措辞上的抖动，不是决策质量真有高低。</p>
 
 <h2>5　实验日志表</h2>
-<table class="small"><thead><tr><th>运行</th><th>T</th><th>Top-P</th><th>推荐</th><th>JSON有效</th><th>约束已检查</th><th>创造力</th><th>精确度</th><th>安全意识</th><th>备注</th></tr></thead><tbody><tr><td>1</td><td>0.2</td><td>0.3</td><td>B</td><td>Yes</td><td>Yes</td><td>低</td><td>高</td><td>高</td><td>整篇最长，风险 4 条</td></tr><tr><td>2</td><td>0.7</td><td>0.9</td><td>B</td><td>Yes</td><td>Yes</td><td>中</td><td>高</td><td>高</td><td>比组 1 短，风险 4 条</td></tr><tr><td>3</td><td>1.0</td><td>0.95</td><td>B</td><td>Yes</td><td>Yes</td><td>高</td><td>高</td><td>高</td><td>最短，风险 3 条，JSON 压成单行</td></tr><tr><td>4</td><td>1.2</td><td>1.0</td><td>B</td><td>Yes</td><td>Yes</td><td>高</td><td>高</td><td>高</td><td>又长回来，风险 4 条，出现 OCR/红队等数据集外名词</td></tr><tr><td>1-重</td><td>0.2</td><td>0.3</td><td>B</td><td>Yes</td><td>Yes</td><td>低</td><td>高</td><td>高</td><td>同参数重跑，见 4.2</td></tr><tr><td>4-重</td><td>1.2</td><td>1.0</td><td>B</td><td>Yes</td><td>Yes</td><td>高</td><td>高</td><td>高</td><td>同参数重跑，见 4.2</td></tr></tbody></table>
+<table class="small log10"><thead><tr><th>运行</th><th>T</th><th>Top-P</th><th>推荐</th><th>JSON有效</th><th>约束已检查</th><th>创造力</th><th>精确度</th><th>安全意识</th><th>备注</th></tr></thead><tbody><tr><td>1</td><td>0.2</td><td>0.3</td><td>B</td><td>Yes</td><td>Yes</td><td>低</td><td>高</td><td>高</td><td>整篇最长，风险 4 条</td></tr><tr><td>2</td><td>0.7</td><td>0.9</td><td>B</td><td>Yes</td><td>Yes</td><td>中</td><td>高</td><td>高</td><td>比组 1 短，风险 4 条</td></tr><tr><td>3</td><td>1.0</td><td>0.95</td><td>B</td><td>Yes</td><td>Yes</td><td>高</td><td>高</td><td>高</td><td>最短，风险 3 条，JSON 压成单行</td></tr><tr><td>4</td><td>1.2</td><td>1.0</td><td>B</td><td>Yes</td><td>Yes</td><td>高</td><td>高</td><td>高</td><td>又长回来，风险 4 条，出现 OCR/红队等数据集外名词</td></tr><tr><td>1-重</td><td>0.2</td><td>0.3</td><td>B</td><td>Yes</td><td>Yes</td><td>低</td><td>高</td><td>高</td><td>同参数重跑，见 4.2</td></tr><tr><td>4-重</td><td>1.2</td><td>1.0</td><td>B</td><td>Yes</td><td>Yes</td><td>高</td><td>高</td><td>高</td><td>同参数重跑，见 4.2</td></tr></tbody></table>
 
-<p>最后三列的填法：</p>
+<p>最后三列怎么填的：</p>
 
 <p>创造力看说得多不多、有没有出新东西。组 1 贴着提示一条条对，填低；组 2 开始删冗词，填中； 组 3 说得最少、组 4 引进了 OCR、红队这些数据集外的概念，都填高。</p>
 
@@ -608,15 +618,15 @@ D. 由供应商营销的自主式&quot;AGI 顾问&quot;。月成本 7,500 美元
 
 <p>列名做了缩写，对一下：&quot;数据集&quot;=数据集使用正确性，&quot;推理&quot;=推理摘要质量，&quot;结构&quot;=结构化输出有效性， &quot;注入&quot;=提示注入警觉性，&quot;实施&quot;=实施方案可行性，&quot;清晰&quot;=清晰度与简洁性。</p>
 
-<p>分组均值：基线 23，四组改进版 32–34，均值 33.00。 （6.3 末尾记了一次复跑：同样的五份输出与同样的提示再评一遍，四组均值 33.25、首末名互换，组间排序不可复现。） 改进版比基线高 10.00 分。</p>
+<p>基线 23 分，四组在 32–34 之间，平均 33.00，比基线高 10 分。（6.3 末尾记了一次复跑：同样的五份输出、同样的提示再评一遍， 四组平均 33.25，首末名互换，组间排序复现不了。）</p>
 
-<p>拆到每一维：</p>
+<p>每一维的差距：</p>
 
 <table class=""><thead><tr><th>维度</th><th>基线</th><th>四组均值</th><th>差值</th></tr></thead><tbody><tr><td>约束满足度</td><td>4</td><td>4.50</td><td>+0.50</td></tr><tr><td>数据集使用正确性</td><td>3</td><td>5.00</td><td>+2.00</td></tr><tr><td>推理摘要质量</td><td>3</td><td>4.75</td><td>+1.75</td></tr><tr><td>结构化输出有效性</td><td>2</td><td>5.00</td><td>+3.00</td></tr><tr><td>提示注入警觉性</td><td>5</td><td>5.00</td><td>+0.00</td></tr><tr><td>实施方案可行性</td><td>2</td><td>4.75</td><td>+2.75</td></tr><tr><td>清晰度与简洁性</td><td>4</td><td>4.00</td><td>+0.00</td></tr></tbody></table>
 
 <p>差距最大的是三项：结构化输出有效性（2 → 5.0）、实施方案可行性（2 → 4.8）、数据集使用正确性（3 → 5.0）。唯一没差的是提示注入警觉性——基线这项本来就是 5 分。</p>
 
-<p>四组之间，组 2 最高（34），组 3 最低（32），极差 2 分。</p>
+<p>四组之间组 2 最高（34），组 3 最低（32），差 2 分。</p>
 
 <h3>6.3 我对评审的核查</h3>
 <p>评审也是模型，它说的话同样得核。我查了三处，回原始输出里对了一遍：</p>
@@ -795,13 +805,13 @@ D 能力3 / 安全1 / 成本3 / 实施2 / 未来2
 <p>五份都没违规。预算没破，C 没被选上，注入文本五组都当数据看，没有一组照做。但有三处不够好：组 1、组 2 拿已出局的 C、D 作比较；组 4 说 D 的&quot;降低工作量&quot;跟人工复核冲突，这是数据集没写的推断；组 3 的实施计划没验收标准。</p>
 
 <h3>7.4 结构化模板如何改变质量？</h3>
-<p><strong>基线（P1）与组 1（P2）是同一个 <code>temperature</code>、同一个数据集，唯一差别是提示结构：</strong></p>
+<p><strong>基线和组 1 用的是同一份数据、同一个 <code>temperature</code>，只差提示怎么写：</strong></p>
 
 <table class=""><thead><tr><th>基线的回答</th><th>组 1 的回答</th><th>评审分变化</th></tr></thead><tbody><tr><td>直接给结论，一段段散文</td><td>按模板分字段：结论、约束判定、分数、计划、风险</td><td>2 → 5</td></tr><tr><td>只报 3.40 / 3.90，没写算式</td><td>每个分数都写出代入算式</td><td>3 → 5</td></tr><tr><td>只有&quot;上线前的强制要求&quot;，没时间轴</td><td>分三周说清先接文档、再上防御、最后试点</td><td>2 → 5</td></tr><tr><td>弱 AI 与 AGI 一句带过</td><td>单独一步论证</td><td>3 → 5</td></tr></tbody></table>
 
 <p><strong>我的回答：</strong></p>
 
-<p>基线和组 1 数据一样、<code>temperature</code> 一样，只差提示怎么写，结果差 10 分。差别在能不能核：基线报了 3.40 和 3.90，数是对的，可怎么算出来的没写，我要么信它要么重算。组 1 把算式摊开写，算错了一眼看得见。代价是啰嗦，同一个意思在好几个地方重复。</p>
+<p>这两份的结果差 10 分。差别在能不能核：基线报了 3.40 和 3.90，数是对的，可怎么算出来的没写，我要么信它要么重算。组 1 把算式摊开写，算错了一眼看得见。代价是啰嗦，同一个意思在好几个地方重复。</p>
 
 <h3>7.5 为什么是弱 AI 而非 AGI？</h3>
 <p><strong>我的回答：</strong></p>
@@ -874,13 +884,19 @@ D 能力3 / 安全1 / 成本3 / 实施2 / 未来2
 
 <table class="cal5"><thead><tr><th>方案</th><th>代入计算</th><th>重算结果</th><th>组 1 输出</th><th>对得上</th></tr></thead><tbody><tr><td>A</td><td>0.35×2 + 0.25×4 + 0.20×5 + 0.10×5 + 0.10×2</td><td>3.40</td><td>3.40</td><td>是</td></tr><tr><td>B</td><td>0.35×4 + 0.25×4 + 0.20×4 + 0.10×3 + 0.10×4</td><td>3.90</td><td>3.90</td><td>是</td></tr><tr><td>C</td><td>0.35×5 + 0.25×3 + 0.20×2 + 0.10×2 + 0.10×5</td><td>3.60</td><td>3.60</td><td>是</td></tr><tr><td>D</td><td>0.35×3 + 0.25×1 + 0.20×3 + 0.10×2 + 0.10×2</td><td>2.30</td><td>2.30</td><td>是</td></tr></tbody></table>
 
-<p>四条必需约束也是让模型一条条对着数据集判的，结论都过。只有一处我留个话：B 的 C3 和 C4 是&quot;部署后满足&quot;， 不是&quot;方案自带&quot;。第 3–4 周的注入防御没真上线，C3 其实就不成立。这点在实施计划里得当上线门槛，不能算能后补的优化项。</p>
+<p>四条必需约束我让模型对着数据集逐条判了，都过。但 B 的 C3 和 C4 有点虚——数据集写的是&quot;部署时要有注入防御和人工复核&quot;， 不是这方案自带。也就是说，第 3–4 周那套防御要是没真上线，C3 就是空的。这条得写死在实施计划里，不能当成以后再说的事。</p>
 
 <hr class="soft">
 <h2>9　我的局限说明</h2>
-<p>一是重复次数不够。4.2 里四组各补了一次重跑，也就两次采样。能对着数值核的地方两次完全一致， 但文本相似度只有 0.415–0.586，长短和风险条数都在晃。两次采样能看出抖动存在，可估不出方差， 也分不开哪部分是参数造成的、哪部分是采样噪声，所以我一直不敢把评审那 1–2 分的排序当真。</p>
+<p>一是重复次数不够。4.2 里四组各补了一次重跑，也就两次采样。能对着数值核的地方两次完全一致， 但文本相似度只有 0.411–0.568，长短和风险条数都在晃。两次采样能看出抖动存在，可估不出方差， 也分不开哪部分是参数造成的、哪部分是采样噪声，所以我一直不敢把评审那 1–2 分的排序当真。</p>
 
-<p>二是评审本身也不稳。评审也是模型，而且只评了一次，6.3 里那点复跑说明不了哪次更接近真值； 只有基线和改进版差的那 10 分两次都一样，我就只认这一头。</p>
+<p>二是评审本身也不稳定。评审也是模型，而且只评了一次，6.3 里那点复跑说明不了哪次更接近真值； 只有基线和改进版差的那 10 分两次都一样，我就只认这一头。</p>
 
 <p>三是只有单一模型，两个参数也没能分开。全程只用 deepseek-v4.1-flash，temperature 和 top_p 又是 一起调的，两者各贡献多少说不清。所以&quot;这四组上 temperature 从 0.2 到 1.2 没改变输出结构&quot;只在这四组 成立，不能说成&quot;这个模型对 temperature 不敏感&quot;。换个模型，曲线未必一样。</p>
+
+<hr class="soft">
+<h2>参考文献</h2>
+<p>DSCI5800. (2026). *思维链提示与参数调优（期中作业）* [课程作业说明]. 课程材料.</p>
+
+<p>DeepSeek. (2026). *deepseek-v4.1-flash* [大型语言模型]. 通过自建实验台调用 <code>https://bifrost.advai.net/v1/chat/completions</code> 接口访问.</p>
 </body></html>

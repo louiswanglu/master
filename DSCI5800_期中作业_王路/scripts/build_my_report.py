@@ -143,6 +143,8 @@ def md_to_html(md, shot_counter):
                 cls = (cls + " opt6").strip()
             elif head and len(head) == 5 and head[0] == "方案":
                 cls = (cls + " cal5").strip()
+            elif head and len(head) == 10 and head[0] == "运行":
+                cls = (cls + " log10").strip()
             html_tbl = f'<table class="{cls}"><thead><tr>{th}</tr></thead><tbody>{tb}</tbody></table>'
             # 单元格里只留文件名，图片统一放到表格之后
             html_tbl = re.sub(
@@ -221,9 +223,9 @@ def md_to_html(md, shot_counter):
 
 
 CSS = """
-@page { size: A4; margin: 16mm 15mm 14mm 15mm; }
-body { font-family:"Songti SC","STSong","Times New Roman",serif; font-size:11pt;
-       line-height:1.38; color:#111; text-align:justify; }
+@page { size: A4; margin: 25.4mm; }
+body { font-family:"Times New Roman","Songti SC","STSong",serif; font-size:12pt;
+       line-height:1.15; color:#111; text-align:justify; }
 h1 { font-size:19pt; text-align:center; margin:0 0 4pt; border-bottom:1.5pt solid #222;
      padding-bottom:8pt; }
 h2 { font-size:13pt; margin:14pt 0 6pt; padding:5pt 8pt; background:#2b3a4a; color:#fff;
@@ -234,13 +236,13 @@ h4 { font-size:11pt; margin:11pt 0 5pt; page-break-after:avoid; }
 p { margin:0 0 5.5pt; }
 code { font-family:Menlo,monospace; font-size:9pt; background:#eef1f4; padding:0 3pt;
        border-radius:2pt; }
-pre { font-family:Menlo,monospace; font-size:7.0pt; line-height:1.28; background:#f7f8fa;
+pre { font-family:Menlo,monospace; font-size:8.5pt; line-height:1.28; background:#f7f8fa;
       border:0.6pt solid #c3cad2; border-left:2.5pt solid #2b6cb0; padding:7pt 9pt;
       white-space:pre-wrap; word-break:break-word; margin:4pt 0 7pt; }
-table { border-collapse:collapse; width:100%; margin:4pt 0 7pt; font-size:8.4pt; }
+table { border-collapse:collapse; width:100%; margin:5pt 0 8pt; font-size:9.5pt; }
 tr { page-break-inside:avoid; }
 thead { display:table-header-group; }
-table.small { font-size:7.8pt; }
+table.small { font-size:8.8pt; }
 /* 评审明细表：4 列，首列窄、依据列宽，避免"类别"被挤成竖排 */
 table.judge { table-layout:fixed; font-size:8.4pt; }
 /* 三列表（对象 / 最弱维度 / 意见）：首列窄但有固定宽度，避免被压成竖排 */
@@ -267,6 +269,18 @@ table.opt6 th:nth-child(3), table.opt6 td:nth-child(3) { width:10%; }
 table.opt6 th:nth-child(4), table.opt6 td:nth-child(4) { width:22%; }
 table.opt6 th:nth-child(5), table.opt6 td:nth-child(5) { width:24%; }
 table.opt6 th:nth-child(6), table.opt6 td:nth-child(6) { width:18%; }
+table.log10 th:nth-child(1), table.log10 td:nth-child(1) { width:7%; }
+table.log10 th:nth-child(2), table.log10 td:nth-child(2) { width:6%; }
+table.log10 th:nth-child(3), table.log10 td:nth-child(3) { width:8%; }
+table.log10 th:nth-child(4), table.log10 td:nth-child(4) { width:7%; }
+table.log10 th:nth-child(5), table.log10 td:nth-child(5) { width:9%; }
+table.log10 th:nth-child(6), table.log10 td:nth-child(6) { width:11%; }
+table.log10 th:nth-child(7), table.log10 td:nth-child(7) { width:9%; }
+table.log10 th:nth-child(8), table.log10 td:nth-child(8) { width:9%; }
+table.log10 th:nth-child(9), table.log10 td:nth-child(9) { width:12%; }
+table.log10 th:nth-child(10), table.log10 td:nth-child(10) { width:20%; }
+table.log10 th { white-space:nowrap; }
+
 table.judge th:nth-child(1), table.judge td:nth-child(1) { width:14%; }
 table.judge th:nth-child(2), table.judge td:nth-child(2) { width:14%; }
 table.judge th:nth-child(3), table.judge td:nth-child(3) { width:42%; }
