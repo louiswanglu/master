@@ -275,8 +275,8 @@ th,td { border:0.6pt solid #8a939c; padding:3pt 4pt; vertical-align:top; }
 th { background:#e3e8ee; font-weight:700; }
 ul,ol { margin:3pt 0 8pt; padding-left:1.6em; }
 li { margin:0 0 3pt; }
-figure { margin:8pt 0 10pt; text-align:center; page-break-inside:avoid; }
-figure img { max-width:100%; max-height:112mm; object-fit:contain;
+figure { margin:4pt 0 6pt; text-align:center; page-break-inside:avoid; }
+figure img { max-width:100%; max-height:84mm; object-fit:contain;
              border:0.6pt solid #999; }
 figcaption { font-size:8.5pt; color:#444; margin-top:3pt; }
 .quote { background:#fffbe8; border:0.6pt solid #d9c377; border-left:2.5pt solid #c9a227;
