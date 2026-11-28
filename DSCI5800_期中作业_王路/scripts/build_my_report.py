@@ -231,7 +231,7 @@ h2 { font-size:13pt; margin:14pt 0 6pt; padding:5pt 8pt; background:#2b3a4a; col
 h3 { font-size:11.5pt; margin:11pt 0 5pt; color:#16324f; border-left:3pt solid #2b6cb0;
      padding-left:7pt; page-break-after:avoid; }
 h4 { font-size:11pt; margin:11pt 0 5pt; page-break-after:avoid; }
-p { margin:0 0 4pt; }
+p { margin:0 0 5.5pt; }
 code { font-family:Menlo,monospace; font-size:9pt; background:#eef1f4; padding:0 3pt;
        border-radius:2pt; }
 pre { font-family:Menlo,monospace; font-size:7.0pt; line-height:1.28; background:#f7f8fa;

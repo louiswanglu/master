@@ -10,7 +10,7 @@ h2 { font-size:13pt; margin:14pt 0 6pt; padding:5pt 8pt; background:#2b3a4a; col
 h3 { font-size:11.5pt; margin:11pt 0 5pt; color:#16324f; border-left:3pt solid #2b6cb0;
      padding-left:7pt; page-break-after:avoid; }
 h4 { font-size:11pt; margin:11pt 0 5pt; page-break-after:avoid; }
-p { margin:0 0 4pt; }
+p { margin:0 0 5.5pt; }
 code { font-family:Menlo,monospace; font-size:9pt; background:#eef1f4; padding:0 3pt;
        border-radius:2pt; }
 pre { font-family:Menlo,monospace; font-size:7.0pt; line-height:1.28; background:#f7f8fa;
@@ -878,11 +878,9 @@ D 能力3 / 安全1 / 成本3 / 实施2 / 未来2
 
 <hr class="soft">
 <h2>9　我的局限说明</h2>
-<p>先说这几条结论能走多远。</p>
+<p>一是重复次数不够。4.2 里四组各补了一次重跑，也就两次采样。能对着数值核的地方两次完全一致， 但文本相似度只有 0.415–0.586，长短和风险条数都在晃。两次采样能看出抖动存在，可估不出方差， 也分不开哪部分是参数造成的、哪部分是采样噪声，所以我一直不敢把评审那 1–2 分的排序当真。</p>
 
-<p>4.2 里四组各补了一次重跑，也就两次采样。能对着数值核的地方两次完全一致，但文本相似度只有 0.415–0.586， 长短和风险条数都在晃。两次采样能看出抖动存在，可估不出方差，也分不开哪部分是参数造成的、哪部分是采样噪声， 所以我一直不敢把评审那 1–2 分的排序当真。</p>
+<p>二是评审本身也不稳。评审也是模型，而且只评了一次，6.3 里那点复跑说明不了哪次更接近真值； 只有基线和改进版差的那 10 分两次都一样，我就只认这一头。</p>
 
-<p>评审本身也是模型，只评了一次，6.3 里那点复跑说明不了哪次更接近真值；只有基线和改进版差的那 10 分两次都一样， 我就只认这一头。</p>
-
-<p>还有一条：全程只用 deepseek-v4.1-flash，temperature 和 top_p 又是一起调的，两者各贡献多少说不清。所以&quot;这四组上 temperature 从 0.2 到 1.2 没改变输出结构&quot;只在这四组成立，不能说成&quot;这个模型对 temperature 不敏感&quot;。 换个模型，曲线未必一样。</p>
+<p>三是只有单一模型，两个参数也没能分开。全程只用 deepseek-v4.1-flash，temperature 和 top_p 又是 一起调的，两者各贡献多少说不清。所以&quot;这四组上 temperature 从 0.2 到 1.2 没改变输出结构&quot;只在这四组 成立，不能说成&quot;这个模型对 temperature 不敏感&quot;。换个模型，曲线未必一样。</p>
 </body></html>
