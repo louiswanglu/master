@@ -776,7 +776,7 @@ D 能力3 / 安全1 / 成本3 / 实施2 / 未来2
 
 <table class="short3"><thead><tr><th>对象</th><th>最弱维度</th><th>评审的具体意见</th></tr></thead><tbody><tr><td>基线</td><td>结构化输出有效性（2）</td><td>改为 JSON 或&quot;标题+字段名&quot;：recommended_option / one_sentence_answer / feasibility_check 四项 / weighted_scores 四项 / implementation_plan 三条 / risks_and_mitigations 至少三条，分值用数字</td></tr><tr><td>组 1</td><td>约束满足度（4）</td><td>步骤 1 为每个方案补齐&quot;月成本 vs 8000&quot;的显式不等式（A=2000、B=6500、D=7500），让四条必需约束逐项可核</td></tr><tr><td>组 2</td><td>清晰度与简洁性（4）</td><td>首次出现处注明「C1=预算、C2=总结与抽取、C3=安全控制、C4=人工复核」，并把重复的注入声明压成一处</td></tr><tr><td>组 3</td><td>约束满足度（4）</td><td>feasibility_check 的四个布尔值未标归属方案，易与逐方案判定混读，建议改成按方案分组</td></tr><tr><td>组 4</td><td>推理摘要质量（4）</td><td>排除 D 应直接落在&quot;安全评分 1 / 风险高 / 透明度差 ⇒ 不满足安全控制&quot;，删去对人工复核冲突的推测；A 被判不可行后不应再称&quot;候选&quot;</td></tr></tbody></table>
 
-<p>这五条看着不一样，说的其实是同一件事：能不能核。基线不是结论错，是结构缺了，分数没法复算；四组的扣分也集中在&quot;判定没标归属&quot;&quot;概念没定义&quot;&quot;推断超出数据集&quot;这三类，没有一条说推荐结论错了。这也正是 6.3 能对上的原因。</p>
+<p>这五条看着不一样，说的其实是同一件事：能不能核。基线不是结论错了，是结构缺了，分数没法复算；四组的扣分也集中在&quot;判定没标归属&quot;&quot;概念没定义&quot;&quot;推断超出数据集&quot;这三类，没有一条说推荐结论错了。这也正是 6.3 能对上的原因。</p>
 
 <h2>7　第 5 部分：六问反思</h2>
 <h3>7.1 哪种设置最精确？</h3>
