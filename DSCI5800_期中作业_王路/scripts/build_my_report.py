@@ -137,6 +137,12 @@ def md_to_html(md, shot_counter):
                 cls = (cls + " judge").strip()
             elif head and len(head) == 3 and head[0] in ("对象", "设计点"):
                 cls = (cls + " short3").strip()
+            elif head and len(head) == 4 and head[0] == "要求":
+                cls = (cls + " req4").strip()
+            elif head and len(head) == 6 and head[0] == "选项":
+                cls = (cls + " opt6").strip()
+            elif head and len(head) == 5 and head[0] == "方案":
+                cls = (cls + " cal5").strip()
             html_tbl = f'<table class="{cls}"><thead><tr>{th}</tr></thead><tbody>{tb}</tbody></table>'
             # 单元格里只留文件名，图片统一放到表格之后
             html_tbl = re.sub(
@@ -246,6 +252,21 @@ table.short3 th:nth-child(3), table.short3 td:nth-child(3) { width:72%; }
 table.short3 th:nth-child(1), table.short3 td:nth-child(1) { width:11%; }
 table.short3 th:nth-child(2), table.short3 td:nth-child(2) { width:34%; }
 table.short3 th:nth-child(3), table.short3 td:nth-child(3) { width:55%; }
+table.cal5 th:nth-child(1), table.cal5 td:nth-child(1) { width:8%; }
+table.cal5 th:nth-child(2), table.cal5 td:nth-child(2) { width:52%; }
+table.cal5 th:nth-child(3), table.cal5 td:nth-child(3) { width:13%; }
+table.cal5 th:nth-child(4), table.cal5 td:nth-child(4) { width:13%; }
+table.cal5 th:nth-child(5), table.cal5 td:nth-child(5) { width:14%; }
+table.req4 th:nth-child(1), table.req4 td:nth-child(1) { width:15%; }
+table.req4 th:nth-child(2), table.req4 td:nth-child(2) { width:45%; }
+table.req4 th:nth-child(3), table.req4 td:nth-child(3) { width:10%; }
+table.req4 th:nth-child(4), table.req4 td:nth-child(4) { width:30%; }
+table.opt6 th:nth-child(1), table.opt6 td:nth-child(1) { width:7%; }
+table.opt6 th:nth-child(2), table.opt6 td:nth-child(2) { width:19%; }
+table.opt6 th:nth-child(3), table.opt6 td:nth-child(3) { width:10%; }
+table.opt6 th:nth-child(4), table.opt6 td:nth-child(4) { width:22%; }
+table.opt6 th:nth-child(5), table.opt6 td:nth-child(5) { width:24%; }
+table.opt6 th:nth-child(6), table.opt6 td:nth-child(6) { width:18%; }
 table.judge th:nth-child(1), table.judge td:nth-child(1) { width:14%; }
 table.judge th:nth-child(2), table.judge td:nth-child(2) { width:14%; }
 table.judge th:nth-child(3), table.judge td:nth-child(3) { width:42%; }
