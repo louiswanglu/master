@@ -91,7 +91,7 @@ hr.soft { border:0; border-top:0.5pt dashed #bbb; margin:12pt 0; }
 <table class=""><thead><tr><th>项目</th><th>我的记录</th></tr></thead><tbody><tr><td>模型</td><td><code>deepseek-v4.1-flash</code>（接口侧别名；服务端回报的实际后端为 <code>deepseek/deepseek-flash</code>）</td></tr><tr><td>调用方式</td><td>直接调用 API：<code>POST /v1/chat/completions</code></td></tr><tr><td>采样参数</td><td>请求体显式携带 <code>temperature</code> 与 <code>top_p</code></td></tr><tr><td>实验平台</td><td>自建的本地网页实验台（本地服务 + 单页界面，页面直接转发 API 请求）</td></tr><tr><td>日期</td><td>2026-11-27</td></tr><tr><td>是否发送 seed</td><td>未发送，每次点击 Run 为一次独立单轮请求</td></tr></tbody></table>
 
 <h3>0.1 关于自建实验台的说明</h3>
-<p>DeepSeek 的网页对话界面没有 <code>temperature</code> 和 <code>top_p</code> 的入口。作业第 3 部分要求&quot;四组 <code>temperature</code> / Top-P 设置&quot;， 可如果在网页对话里反复追问，四次的参数其实一模一样，拿到的只是默认值下的四次独立采样，<strong>根本算不上参数对比</strong>。 所以我直接调 API，自己搭了个本地网页：左边两个滑杆控制 <code>temperature</code> 和 <code>top_p</code>，右边显示实际送出去的请求参数、 token 数和耗时，每次调用还自动存一份日志，里面有完整的请求和响应。</p>
+<p>DeepSeek 的网页对话界面没有 <code>temperature</code> 和 <code>top_p</code> 的入口（DeepSeek, 2026）。作业第 3 部分要求&quot;四组 <code>temperature</code> / Top-P 设置&quot;， 可如果在网页对话里反复追问，四次的参数其实一模一样，拿到的只是默认值下的四次独立采样，<strong>根本算不上参数对比</strong>。 所以我直接调 API，自己搭了个本地网页：左边两个滑杆控制 <code>temperature</code> 和 <code>top_p</code>，右边显示实际送出去的请求参数、 token 数和耗时，每次调用还自动存一份日志，里面有完整的请求和响应。</p>
 
 <p>四组实验就是在这条链上依次改数值、重新发请求，除了参数别的都不动：把滑杆调到目标值、点 Run、 截图（让滑杆数值和右边&quot;请求参数（实际发送）&quot;落在同一屏）、再把输出原文跟日志对一遍。 下面引的每一段输出都是日志里的原文，一个字没动。</p>
 
@@ -900,5 +900,5 @@ D 能力3 / 安全1 / 成本3 / 实施2 / 未来2
 <h2>参考文献</h2>
 <p>DSCI5800. (2026). *思维链提示与参数调优（期中作业）* [课程作业说明]. 课程材料.</p>
 
-<p>DeepSeek. (2026). *deepseek-v4.1-flash* [大型语言模型]. 通过自建实验台调用 <code>https://bifrost.advai.net/v1/chat/completions</code> 接口访问.</p>
+<p>DeepSeek. (2026). *DeepSeek-V4.1-Flash* [大型语言模型]. https://bifrost.advai.net/v1/chat/completions</p>
 </body></html>
